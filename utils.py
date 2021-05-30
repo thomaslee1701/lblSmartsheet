@@ -35,7 +35,7 @@ def getRow(props, sheet, columnMap):
 # Returns a list of values in the order of the row.
 def getRowValues(props, sheet, columnMap):
     row = getRow(props, sheet, columnMap)
-    return [cell.display_value for cell in row.cells]
+    return [smart.Sheets.get_column(sheet.id, cell.column_id).title + ":" + str(cell.display_value) for cell in row.cells]
 
 # HELPER FUNCTION for updateRowValues
 # row: row object

@@ -30,8 +30,8 @@ def setSheetId(sheetName):
 
 """
 Currently supported operations:
-get SHEETNAME PROPS
-update SHEETNAME PROPS;UPDATEDPROPS
+GET SHEETNAME PROPS
+UPDATE SHEETNAME PROPS;UPDATEDPROPS
 """
 
 if __name__ == '__main__':
@@ -52,10 +52,10 @@ if __name__ == '__main__':
         for column in sheet.columns:
             columnMap[column.title] = column.id    
 
-        if args[1] == 'get':
+        if args[1] == 'GET':
             props = stringToDict(args[3])
             print(getRowValues(props, sheet, columnMap))
-        elif args[1] == 'update':
+        elif args[1] == 'UPDATE':
             splitArgs = args[3].split(';')
             props = stringToDict(splitArgs[0])
             updatedProps = stringToDict(splitArgs[1])
