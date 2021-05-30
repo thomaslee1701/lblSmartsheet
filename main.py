@@ -19,12 +19,19 @@ for column in sheet.columns:
     columnMap[column.title] = column.id
 
 
-def getColumnDisplayValueOfRow(row, columnName):
+#Gets the cell of the inputted column name from a row.
+def getRowCell(row, columnName):
     columnId = columnMap[columnName]
-    return row.get_column(columnId).display_value
+    return row.get_column(columnId)
 
-testRow = sheet.rows[1]
-print(getColumnDisplayValueOfRow(testRow, "Name"))
+#Updates the cell value of the inputted column name from a given row.
+def updateCellValue(row, columnName, updatedValue):
+    cell = getRowCell(row, columnName)
+    cell.value = updatedValue;
+    updatedRow = smart.models.Row()
+    updatedRow.id = row.id
+    updatedRow.cells.append(cell)
+    smart.Sheets.update_rows(sheetId, [updatedRow])
 
 """
 if __name__ == "__main__":
