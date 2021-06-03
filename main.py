@@ -56,10 +56,12 @@ if __name__ == '__main__':
             props = stringToDict(args[3])
             print(getRowValues(props, sheet, columnMap))
         elif args[1] == 'UPDATE':
-            splitArgs = args[3].split(';')
+            splitArgs = args[3].split(';;')
             props = stringToDict(splitArgs[0])
             updatedProps = stringToDict(splitArgs[1])
             rowToUpdate = getRow(props, sheet, columnMap)
             updateRowValues(rowToUpdate, updatedProps, sheet, columnMap)
 
-
+# Quick access for demo:
+# main.py GET Amazon "{Phase:NDA,Task Name:NDA; Sponsor; PI; Req #}"
+# main.py UPDATE Amazon "{Phase:NDA,Task Name:NDA; Sponsor; PI; Req #};;{Duration:50m,% Complete:50%}"
